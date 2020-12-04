@@ -8,12 +8,6 @@ import (
 	"github.com/jnewmano/advent2020/input"
 )
 
-var _ = input.SetRaw(raw)
-
-// var things = input.Load()
-// var things = input.LoadSliceSliceString("")
-var things = input.LoadSliceString("\n\n")
-
 func main() {
 
 	sum := parta()
@@ -33,6 +27,8 @@ pid (Passport ID)
 cid (Country ID)
 */
 func parta() interface{} {
+	// input.SetRaw(raw)
+	things := input.LoadSliceString("\n\n")
 
 	expected := map[string]func(s string) bool{
 		"byr": byr,
@@ -49,6 +45,7 @@ func parta() interface{} {
 	for _, v := range things {
 		parts := parse(v)
 		valid := true
+
 		for key, f := range expected {
 			data, ok := parts[key]
 			if !ok && key != "cid" {
