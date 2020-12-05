@@ -94,7 +94,7 @@ func loadInputFromAPI() {
 
 	fmt.Println("loading remote input file")
 
-	cmd := exec.Command("aocdl", "-day", day, "-output", inputFilePath)
+	cmd := exec.Command("aocdl", "-year", "2020", "-day", day, "-output", inputFilePath)
 	fmt.Println("%", cmd.Args)
 
 	output, err := cmd.CombinedOutput()
