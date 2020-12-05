@@ -41,7 +41,6 @@ func parta() interface{} {
 	}
 
 	sort.Ints(scores)
-
 	for i, v := range scores {
 		if i == 0 {
 			continue
@@ -55,23 +54,21 @@ func parta() interface{} {
 }
 
 func processPass(s string) int {
-	row := 0
-	column := 0
+	// we don't actually care about the row and column
+	//row := 0
+	//column := 0
+	score := 0
 
-	for i, v := range s {
+	for _, v := range s {
 		j := 0
 		if v == 'B' || v == 'R' {
 			j = 1
 		}
 
-		if i < 7 {
-			row = row<<1 + j
-		} else {
-			column = column<<1 + j
-		}
+		score = score<<1 + j
 	}
 
-	return row*8 + column
+	return score
 }
 
 var raw = ``

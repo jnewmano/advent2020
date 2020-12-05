@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/jnewmano/advent2020/input"
+	"github.com/jnewmano/advent2020/output"
 )
 
 func main() {
@@ -35,34 +36,31 @@ func parta() interface{} {
 	// var things = input.Load()
 	// var things = input.LoadSliceSliceString("")
 	var things = input.LoadSliceString("\n")
-	high := 0
+	scores := []int{}
 	for _, v := range things {
 		s := processPass(v)
-		if s > high {
-			high = s
-		}
+		scores = append(scores, s)
 	}
-	return high
+
+	return output.High(scores)
 }
 
 func processPass(s string) int {
-	row := 0
-	column := 0
+	// we don't actually care about the row and column
+	//row := 0
+	//column := 0
+	score := 0
 
-	for i, v := range s {
+	for _, v := range s {
 		j := 0
 		if v == 'B' || v == 'R' {
 			j = 1
 		}
 
-		if i < 7 {
-			row = row<<1 + j
-		} else {
-			column = column<<1 + j
-		}
+		score = score<<1 + j
 	}
 
-	return row*8 + column
+	return score
 }
 
 var raw = ``
