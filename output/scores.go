@@ -18,6 +18,14 @@ func Low(scores []int) int {
 	return n[0]
 }
 
+func Sum(scores []int) int {
+	sum := 0
+	for _, v := range scores {
+		sum += v
+	}
+	return sum
+}
+
 func Duplicate(list []int) []int {
 	n := make([]int, len(list))
 	copy(n, list)

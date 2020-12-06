@@ -19,12 +19,13 @@ func parta() interface{} {
 	// var things = input.LoadSliceSliceString("")
 	var things = input.LoadSliceString("")
 
+	// var list = make([]int)
 	for _, v := range things {
 		process(v)
 	}
-	// var list = make([]int)
 
 	// output.High(list)
+	// output.Sum(list)
 	return nil
 }
 

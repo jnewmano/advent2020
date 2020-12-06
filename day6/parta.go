@@ -24,14 +24,8 @@ func parta() interface{} {
 		answers := process(v)
 		counts = append(counts, len(answers))
 	}
-	// var list = make([]int)
-	count := 0
-	for _, v := range counts {
-		count += v
-	}
 
-	// output.High(list)
-	return count
+	return output.Sum(counts)
 }
 
 func process(s string) map[string]string {

@@ -30,14 +30,8 @@ func parta() interface{} {
 		}
 		counts = append(counts, score)
 	}
-	// var list = make([]int)
-	count := 0
-	for _, v := range counts {
-		count += v
-	}
 
-	// output.High(list)
-	return count
+	return output.Sum(counts)
 }
 
 func process(s string) (int, map[string]int) {
