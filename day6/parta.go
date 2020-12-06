@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"unicode"
 
 	"github.com/jnewmano/advent2020/input"
 	"github.com/jnewmano/advent2020/output"
@@ -28,12 +29,11 @@ func parta() interface{} {
 	return output.Sum(counts)
 }
 
-func process(s string) map[string]string {
+func process(s string) map[rune]rune {
 
-	u := make(map[string]string)
+	u := make(map[rune]rune)
 	for _, v := range s {
-		v := string(v)
-		if v == "" || v == "\n" {
+		if unicode.IsSpace(v) {
 			continue
 		}
 
