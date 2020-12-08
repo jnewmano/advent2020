@@ -2,6 +2,6 @@
 
 set -ex
 
-go build -v -i -o parta parta.go
+go build -v -i -o parta parta.go computer.go
 
 ./parta
