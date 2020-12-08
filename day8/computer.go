@@ -57,7 +57,7 @@ func (c *Computer) Run() error {
 		case "jmp":
 			newPC = c.pc + i.A
 		default:
-			panic("unknown code")
+			panic(fmt.Sprintf("unknown code pc=(%d) code=(%s)", c.pc, i.Code))
 		}
 		c.pc = newPC
 
