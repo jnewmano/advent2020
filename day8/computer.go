@@ -49,17 +49,17 @@ func (c *Computer) Run() error {
 		}
 		runCount[c.pc] = runCount[c.pc] + 1
 
+		newPC := c.pc + 1
 		switch i.Code {
 		case "nop":
-			c.pc++
 		case "acc":
-			c.pc++
 			c.acc += i.A
 		case "jmp":
-			c.pc += i.A
+			newPC = c.pc + i.A
 		default:
 			panic("unknown code")
 		}
+		c.pc = newPC
 
 	}
 
