@@ -29,10 +29,8 @@ func parta() interface{} {
 		switch v.Code {
 		case "nop":
 			v.Code = "jmp"
-			c.ins[i] = v
 		case "jmp":
 			v.Code = "nop"
-			c.ins[i] = v
 		default:
 			continue
 		}

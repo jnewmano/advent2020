@@ -12,17 +12,17 @@ type Computer struct {
 	pc  int
 	acc int
 
-	ins []Instruction
+	ins []*Instruction
 
 	DetectLoops bool
 }
 
 func LoadComputer(detectLoops bool) *Computer {
 	var things = input.LoadSliceString("")
-	ins := []Instruction{}
+	ins := []*Instruction{}
 	for _, v := range things {
 		i := parseLine(v)
-		ins = append(ins, i)
+		ins = append(ins, &i)
 	}
 
 	c := Computer{
