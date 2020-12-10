@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -ex
+
+go build -v -i -o parta parta.go
+
+./parta
