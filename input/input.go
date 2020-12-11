@@ -15,7 +15,7 @@ import (
 var raw string
 
 func SetRaw(a string) error {
-	raw = a
+	raw = strings.TrimSpace(a)
 	return nil
 }
 
