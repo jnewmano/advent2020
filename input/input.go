@@ -1,6 +1,8 @@
 package input
 
 import (
+	"bytes"
+	"crypto/sha256"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -30,6 +32,10 @@ func Load() string {
 	all, err := ioutil.ReadFile("input.txt")
 	if err != nil {
 		panic(err)
+	}
+
+	if checkSHA(all) != true {
+		panic("sha didn't validate, input.txt file has been modified")
 	}
 
 	return strings.TrimSpace(string(all))
@@ -104,4 +110,34 @@ func loadInputFromAPI() {
 	}
 
 	fmt.Println(string(output))
+}
+
+func checkSHA(output []byte) bool {
+
+	expectedSHA := sha256.Sum256(output)
+
+	_, err := os.Stat("input.txt.sha")
+	if os.IsNotExist(err) {
+		writeSHA(expectedSHA[:])
+	}
+
+	sha, err := ioutil.ReadFile("input.txt.sha")
+	if err != nil {
+		panic(err)
+	}
+
+	if bytes.Compare(sha, expectedSHA[:]) != 0 {
+		fmt.Printf("got:      %x\n", sha)
+		fmt.Printf("expected: %x\n", expectedSHA)
+		panic("input.txt sha is different than expected")
+	}
+
+	return true
+}
+
+func writeSHA(sha []byte) {
+	err := ioutil.WriteFile("input.txt.sha", sha, 0444)
+	if err != nil {
+		panic(err)
+	}
 }
