@@ -2,15 +2,15 @@ package main
 
 import (
 	"fmt"
-	"math"
 	"strconv"
 
 	"github.com/jnewmano/advent2020/input"
+	"github.com/jnewmano/advent2020/simplemath"
 )
 
 func main() {
 
-	//	input.SetRaw(raw)
+	//input.SetRaw(raw)
 	var things = input.LoadSliceString("")
 
 	x, y := 0, 0
@@ -36,21 +36,20 @@ func main() {
 		}
 	}
 
-	fmt.Println(x, y, math.Abs(float64(x))+math.Abs(float64(y)))
+	fmt.Println(x, y, simplemath.Abs(x)+simplemath.Abs(y))
 }
 
 func rotateWaypoint(wx, wy int, w rune, d int) (int, int) {
-	if d <= 0 {
-		return wx, wy
+	if w == 'R' {
+		w = 'L'
+		d = -d
 	}
 
-	if w == 'L' {
-		w = 'R'
-		d = 360 - d
-	}
-	wx, wy = wy, -wx
+	// counterclockwise rotation matrix
+	rx := wx*simplemath.Cos(d) - wy*simplemath.Sin(d)
+	ry := wx*simplemath.Sin(d) + wy*simplemath.Cos(d)
 
-	return rotateWaypoint(wx, wy, w, d-90)
+	return rx, ry
 }
 
 func move(x, y int, a rune, d int) (int, int) {

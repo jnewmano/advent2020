@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
-	"math"
 	"strconv"
 
 	"github.com/jnewmano/advent2020/input"
+	"github.com/jnewmano/advent2020/simplemath"
 )
 
 func main() {
@@ -32,7 +32,7 @@ func main() {
 		}
 	}
 
-	fmt.Println(x, y, math.Abs(float64(x))+math.Abs(float64(y)))
+	fmt.Println(x, y, simplemath.Abs(x)+simplemath.Abs(y))
 }
 
 func rotate(dir rune, w rune, d int) rune {
