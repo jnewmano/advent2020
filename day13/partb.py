@@ -1,8 +1,7 @@
 from sympy.ntheory.modular import crt
 
-f = open('input.txt', 'r')
-lines = f.readlines()
-buses = lines[1].strip().split(',')
+things = open('input.txt', 'r').readlines()
+buses = things[1].strip().split(',')
 
 mods = []
 values = []
