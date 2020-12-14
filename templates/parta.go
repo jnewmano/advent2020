@@ -1,19 +1,12 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/jnewmano/advent2020/input"
 	"github.com/jnewmano/advent2020/output"
 )
 
 func main() {
 
-	sum := parta()
-	fmt.Println(sum)
-}
-
-func parta() interface{} {
 	// input.SetRaw(raw)
 	// var things = input.Load()
 	// var things = input.LoadSliceSliceString("")
@@ -26,7 +19,7 @@ func parta() interface{} {
 
 	// output.High(list)
 	// output.Sum(list)
-	return nil
+
 }
 
 func process(s string) {
